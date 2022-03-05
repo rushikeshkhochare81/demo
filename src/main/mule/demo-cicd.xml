@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="47ae12ac-1809-4121-b1f9-4ea56635ad2a" >
+		<http:listener-connection host="0.0.0.0" port="8081"/>
+	</http:listener-config>
+	<flow name="demo-cicdFlow" doc:id="f6a7e9c7-9639-4390-9f90-c22e2f68f8a8" >
+		<http:listener doc:name="Listener" doc:id="60c948d9-2faa-417d-a4f2-0bccd92c1c21" config-ref="HTTP_Listener_config" path="/demo" allowedMethods="POST"/>
+		<logger level="INFO" doc:name="Logger" doc:id="312941ba-4363-45b8-bc20-5f65a1e61a03" message="Demo start log"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="5c1ebb2a-b20d-43b8-8713-e895ba3d0c9e" />
+		<logger level="INFO" doc:name="Logger" doc:id="c1ded067-60b3-4a5e-b638-a94e28ea7cd1" message="Demo end log"/>
+	</flow>
+</mule>
